@@ -213,6 +213,10 @@ class Vector {
     public inline function normalize() {
         return divideScalar( length );
     } //normalize
+    
+    public inline function distanceTo(other:Vector) {
+        return Vector.Distance(this, other);
+    }
 
     public inline function dot(other:Vector) {
 
@@ -304,6 +308,11 @@ class Vector {
             a.z - b
         );
     } //SubtractScalar
+    
+    public static inline function Distance(a:Vector, b:Vector):Float {
+		var d = Vector.Subtract(a, b);
+		return Math.sqrt( d.x * d.x + d.y * d.y + d.z * d.z );
+	} //Euclidean (straight line) distance
 
     public static inline function Cross(a:Vector, b:Vector) {
         return new Vector(
